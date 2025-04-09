@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile | Delowave</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">Delowave</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="jobs.html">Jobs</a></li>
+                    <li><a href="profile.html" class="active">Profile</a></li>
+                    <li><a href="signup.html" class="cta-button">Sign Up</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Profile Header Section -->
+    <section style="padding-top: 120px; padding-bottom: 40px; background-color: var(--background-secondary);">
+        <div class="container">
+            <div style="display: flex; gap: 24px; align-items: center;">
+                <div style="width: 120px; height: 120px; border-radius: 50%; background-color: var(--primary); display: flex; align-items: center; justify-content: center; color: white; font-size: 48px; font-weight: 600;">
+                    JD
+                </div>
+                <div>
+                    <h1 style="margin-bottom: 8px; font-size: 32px;">John Doe</h1>
+                    <p style="color: var(--text-secondary); margin-bottom: 16px;">Full Stack Developer | San Francisco, CA</p>
+                    <div style="display: flex; gap: 16px;">
+                        <a href="#" class="btn" style="display: flex; align-items: center; gap: 8px;"><i class="fas fa-edit"></i> Edit Profile</a>
+                        <a href="#" style="display: flex; align-items: center; gap: 8px; color: var(--text-secondary);"><i class="fas fa-cog"></i> Settings</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tabs Section -->
+    <section style="background-color: white; border-bottom: 1px solid rgba(0, 0, 0, 0.05);">
+        <div class="container">
+            <div style="display: flex; gap: 32px; font-weight: 500;">
+                <a href="#" class="tab active" style="padding: 16px 0; border-bottom: 2px solid var(--primary); color: var(--primary);">Dashboard</a>
+                <a href="#" class="tab" style="padding: 16px 0; color: var(--text-secondary);">Courses</a>
+                <a href="#" class="tab" style="padding: 16px 0; color: var(--text-secondary);">Certificates</a>
+                <a href="#" class="tab" style="padding: 16px 0; color: var(--text-secondary);">Job Applications</a>
+                <a href="#" class="tab" style="padding: 16px 0; color: var(--text-secondary);">Settings</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Section -->
+    <section style="padding: 60px 0;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 40px; align-items: start;">
+                <!-- Left column -->
+                <div>
+                    <!-- Progress Summary -->
+                    <div style="background: white; border-radius: var(--border-radius); padding: 24px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04); margin-bottom: 32px;">
+                        <h2 style="margin-bottom: 24px; font-size: 20px;">Your Progress</h2>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px;">
+                            <div style="text-align: center;">
+                                <div style="font-size: 32px; font-weight: 600; color: var(--primary); margin-bottom: 8px;">3</div>
+                                <p style="color: var(--text-secondary);">Courses in Progress</p>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 32px; font-weight: 600; color: var(--primary); margin-bottom: 8px;">2</div>
+                                <p style="color: var(--text-secondary);">Certificates Earned</p>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 32px; font-weight: 600; color: var(--primary); margin-bottom: 8px;">4</div>
+                                <p style="color: var(--text-secondary);">Job Applications</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- In Progress Courses -->
+                    <div style="background: white; border-radius: var(--border-radius); padding: 24px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04); margin-bottom: 32px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                            <h2 style="font-size: 20px;">In Progress Courses</h2>
+                            <a href="#" style="color: var(--primary); font-weight: 500;">View All</a>
+                        </div>
+                        
+                        <!-- Course 1 -->
+                        <div style="padding: 16px; border-radius: 12px; border: 1px solid #E5E5E5; margin-bottom: 16px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 16px;">
+                                <h3 style="font-size: 18px;">JavaScript Essentials</h3>
+                                <span style="color: var(--text-secondary);">65% Complete</span>
+                            </div>
+                            <div style="height: 8px; background-color: #E5E5E5; border-radius: 4px; margin-bottom: 16px; overflow: hidden;">
+                                <div style="height: 100%; width: 65%; background-color: var(--primary); border-radius: 4px;"></div>
+                            </div>
+                            <a href="#" class="btn" style="width: 100%;">Continue Learning</a>
+                        </div>
+                        
+                        <!-- Course 2 -->
+                        <div style="padding: 16px; border-radius: 12px; border: 1px solid #E5E5E5; margin-bottom: 16px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 16px;">
+                                <h3 style="font-size: 18px;">React Fundamentals</h3>
+                                <span style="color: var(--text-secondary);">40% Complete</span>
+                            </div>
+                            <div style="height: 8px; background-color: #E5E5E5; border-radius: 4px; margin-bottom: 16px; overflow: hidden;">
+                                <div style="height: 100%; width: 40%; background-color: var(--primary); border-radius: 4px;"></div>
+                            </div>
+                            <a href="#" class="btn" style="width: 100%;">Continue Learning</a>
+                        </div>
+                        
+                        <!-- Course 3 -->
+                        <div style="padding: 16px; border-radius: 12px; border: 1px solid #E5E5E5;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 16px;">
+                                <h3 style="font-size: 18px;">Digital Marketing</h3>
+                                <span style="color: var(--text-secondary);">20% Complete</span>
+                            </div>
+                            <div style="height: 8px; background-color: #E5E5E5; border-radius: 4px; margin-bottom: 16px; overflow: hidden;">
+                                <div style="height: 100%; width: 20%; background-color: var(--primary); border-radius: 4px;"></div>
+                            </div>
+                            <a href="#" class="btn" style="width: 100%;">Continue Learning</a>
+                        </div>
+                    </div>
+
+                    <!-- Recent Applications -->
+                    <div style="background: white; border-radius: var(--border-radius); padding: 24px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                            <h2 style="font-size: 20px;">Recent Job Applications</h2>
+                            <a href="#" style="color: var(--primary); font-weight: 500;">View All</a>
+                        </div>
+                        
+                        <div style="border-bottom: 1px solid #E5E5E5; padding-bottom: 16px; margin-bottom: 16px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                <h3 style="font-size: 18px;">Frontend Developer</h3>
+                                <span style="font-weight: 500; color: #4CAF50;">Interview Scheduled</span>
+                            </div>
+                            <p style="color: var(--text-secondary); margin-bottom: 8px;">TechCorp Inc. • San Francisco, CA</p>
+                            <p style="color: var(--text-secondary); font-size: 14px;">Applied on Apr 5, 2024</p>
+                        </div>
+                        
+                        <div style="border-bottom: 1px solid #E5E5E5; padding-bottom: 16px; margin-bottom: 16px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                <h3 style="font-size: 18px;">UI/UX Designer</h3>
+                                <span style="font-weight: 500; color: #FF9800;">Under Review</span>
+                            </div>
+                            <p style="color: var(--text-secondary); margin-bottom: 8px;">DesignWorks • Remote</p>
+                            <p style="color: var(--text-secondary); font-size: 14px;">Applied on Apr 3, 2024</p>
+                        </div>
+                        
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                <h3 style="font-size: 18px;">Full Stack Developer</h3>
+                                <span style="font-weight: 500; color: #F44336;">Not Selected</span>
+                            </div>
+                            <p style="color: var(--text-secondary); margin-bottom: 8px;">InnovateX • New York, NY</p>
+                            <p style="color: var(--text-secondary); font-size: 14px;">Applied on Mar 28, 2024</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right column -->
+                <div>
+                    <!-- Achievements section -->
+                    <div style="background: white; border-radius: var(--border-radius); padding: 24px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04); margin-bottom: 32px;">
+                        <h2 style="margin-bottom: 24px; font-size: 20px;">Achievements</h2>
+                        
+                        <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+                            <div style="width: 48px; height: 48px; background-color: #FFF8E1; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-trophy" style="color: #FFC107; font-size: 20px;"></i>
+                            </div>
+                            <div>
+                                <h3 style="font-size: 16px; margin-bottom: 4px;">Course Completion</h3>
+                                <p style="color: var(--text-secondary); font-size: 14px;">HTML & CSS Fundamentals</p>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+                            <div style="width: 48px; height: 48px; background-color: #E8F5E9; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-certificate" style="color: #4CAF50; font-size: 20px;"></i>
+                            </div>
+                            <div>
+                                <h3 style="font-size: 16px; margin-bottom: 4px;">Certificate Earned</h3>
+                                <p style="color: var(--text-secondary); font-size: 14px;">Front-End Web Developer</p>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; gap: 16px;">
+                            <div style="width: 48px; height: 48px; background-color: #E3F2FD; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-star" style="color: var(--primary); font-size: 20px;"></i>
+                            </div>
+                            <div>
+                                <h3 style="font-size: 16px; margin-bottom: 4px;">Project Excellence</h3>
+                                <p style="color: var(--text-secondary); font-size: 14px;">Portfolio Website Project</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Skills section -->
+                    <div style="background: white; border-radius: var(--border-radius); padding: 24px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04); margin-bottom: 32px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                            <h2 style="font-size: 20px;">Skills</h2>
+                            <a href="#" style="color: var(--primary); font-weight: 500;"><i class="fas fa-plus"></i> Add</a>
+                        </div>
+                        
+                        <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+                            <span style="background: var(--background-secondary); padding: 8px 16px; border-radius: 100px; font-size: 14px;">HTML & CSS</span>
+                            <span style="background: var(--background-secondary); padding: 8px 16px; border-radius: 100px; font-size: 14px;">JavaScript</span>
+                            <span style="background: var(--background-secondary); padding: 8px 16px; border-radius: 100px; font-size: 14px;">React</span>
+                            <span style="background: var(--background-secondary); padding: 8px 16px; border-radius: 100px; font-size: 14px;">Node.js</span>
+                            <span style="background: var(--background-secondary); padding: 8px 16px; border-radius: 100px; font-size: 14px;">UI/UX Design</span>
+                            <span style="background: var(--background-secondary); padding: 8px 16px; border-radius: 100px; font-size: 14px;">Responsive Design</span>
+                            <span style="background: var(--background-secondary); padding: 8px 16px; border-radius: 100px; font-size: 14px;">Git</span>
+                        </div>
+                    </div>
+
+                    <!-- Recommended courses section -->
+                    <div style="background: white; border-radius: var(--border-radius); padding: 24px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);">
+                        <h2 style="margin-bottom: 24px; font-size: 20px;">Recommended Courses</h2>
+                        
+                        <div style="margin-bottom: 16px;">
+                            <h3 style="font-size: 16px; margin-bottom: 8px;">Node.js Backend Development</h3>
+                            <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 12px;">Perfect next step after your JavaScript course.</p>
+                            <a href="#" class="btn" style="font-size: 14px; padding: 8px 16px;">Enroll Now</a>
+                        </div>
+                        
+                        <div style="margin-bottom: 16px;">
+                            <h3 style="font-size: 16px; margin-bottom: 8px;">Advanced React Patterns</h3>
+                            <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 12px;">Level up your React skills with advanced concepts.</p>
+                            <a href="#" class="btn" style="font-size: 14px; padding: 8px 16px;">Enroll Now</a>
+                        </div>
+                        
+                        <div>
+                            <h3 style="font-size: 16px; margin-bottom: 8px;">TypeScript Fundamentals</h3>
+                            <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 12px;">Add static typing to your JavaScript projects.</p>
+                            <a href="#" class="btn" style="font-size: 14px; padding: 8px 16px;">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-container">
+            <a href="index.html" class="logo">Delowave</a>
+            <div class="footer-links">
+                <a href="courses.html">Courses</a>
+                <a href="jobs.html">Jobs</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabs.forEach(t => t.style.borderBottom = 'none');
+                    tabs.forEach(t => t.style.color = 'var(--text-secondary)');
+                    this.classList.add('active');
+                    this.style.borderBottom = '2px solid var(--primary)';
+                    this.style.color = 'var(--primary)';
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

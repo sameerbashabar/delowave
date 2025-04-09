@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobs | Delowave</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">Delowave</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="jobs.html" class="active">Jobs</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="signup.html" class="cta-button">Sign Up</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" style="padding-bottom: 40px;">
+        <div class="container">
+            <h1>Find Your Dream Job</h1>
+            <p>Connect with top employers and advance your career</p>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section style="padding: 40px 0; background-color: var(--background-secondary);">
+        <div class="container">
+            <div style="background: white; border-radius: var(--border-radius); padding: 24px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);">
+                <form style="display: grid; grid-template-columns: 1fr 1fr auto; gap: 16px; align-items: center;">
+                    <div>
+                        <label style="display: block; margin-bottom: 8px; font-weight: 500;">Keywords</label>
+                        <input type="text" placeholder="Job title, skills, or company" style="width: 100%; padding: 12px 16px; border-radius: 8px; border: 1px solid #E5E5E5; font-size: 16px;">
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 8px; font-weight: 500;">Location</label>
+                        <input type="text" placeholder="City, state, or remote" style="width: 100%; padding: 12px 16px; border-radius: 8px; border: 1px solid #E5E5E5; font-size: 16px;">
+                    </div>
+                    <div style="margin-top: 24px;">
+                        <button type="submit" class="btn" style="height: 48px; width: 100%;"><i class="fas fa-search"></i> Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="jobs" style="padding-top: 40px; background-color: white;">
+        <div class="container">
+            <div class="filter-bar" style="margin-bottom: 40px;">
+                <div class="filter-pill active">All Jobs</div>
+                <div class="filter-pill">Tech</div>
+                <div class="filter-pill">Non-Tech</div>
+                <div class="filter-pill">Remote</div>
+                <div class="filter-pill">Entry Level</div>
+                <div class="filter-pill">Experienced</div>
+            </div>
+
+            <!-- Job Listings -->
+            <div style="display: grid; grid-template-columns: 1fr; gap: 24px;">
+                <div style="background: white; border-radius: var(--border-radius); padding: 24px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04); display: grid; grid-template-columns: auto 1fr auto; gap: 24px; align-items: center;">
+                    <div style="width: 64px; height: 64px; background-color: #E3F2FD; display: flex; align-items: center; justify-content: center; border-radius: 16px;">
+                        <i class="fas fa-laptop-code" style="font-size: 24px; color: var(--primary);"></i>
+                    </div>
+                    <div>
+                        <h3 style="margin-bottom: 8px;">Senior Frontend Developer</h3>
+                        <div style="display: flex; gap: 16px; color: var(--text-secondary); margin-bottom: 8px;">
+                            <span><i class="fas fa-building"></i> TechCorp Inc.</span>
+                            <span><i class="fas fa-map-marker-alt"></i> San Francisco, CA</span>
+                            <span><i class="fas fa-money-bill-wave"></i> $120k - $140k</span>
+                        </div>
+                        <div class="job-skills" style="margin-bottom: 0;">
+                            <span class="job-skill">React</span>
+                            <span class="job-skill">TypeScript</span>
+                            <span class="job-skill">Node.js</span>
+                            <span class="job-skill">5+ years</span>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="#" class="btn">Apply Now</a>
+                    </div>
+                </div>
+
+                <div style="background: white; border-radius: var(--border-radius); padding: 24px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04); display: grid; grid-template-columns: auto 1fr auto; gap: 24px; align-items: center;">
+                    <div style="width: 64px; height: 64px; background-color: #E8F5E9; display: flex; align-items: center; justify-content: center; border-radius: 16px;">
+                        <i class="fas fa-database" style="font-size: 24px; color: #4CAF50;"></i>
+                    </div>
+                    <div>
+                        <h3 style="margin-bottom: 8px;">Data Scientist</h3>
+                        <div style="display: flex; gap: 16px; color: var(--text-secondary); margin-bottom: 8px;">
+                            <span><i class="fas fa-building"></i> AnalyticsPro</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Remote</span>
+                            <span><i class="fas fa-money-bill-wave"></i> $100k - $130k</span>
+                        </div>
+                        <div class="job-skills" style="margin-bottom: 0;">
+                            <span class="job-skill">Python</span>
+                            <span class="job-skill">Machine Learning</span>
+                            <span class="job-skill">SQL</span>
+                            <span class="job-skill">3+ years</span>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="#" class="btn">Apply Now</a>
+                    </div>
+                </div>
+
+                <div style="background: white; border-radius: var(--border-radius); padding: 24px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04); display: grid; grid-template-columns: auto 1fr auto; gap: 24px; align-items: center;">
+                    <div style="width: 64px; height: 64px; background-color: #FFEBEE; display: flex; align-items: center; justify-content: center; border-radius: 16px;">
+                        <i class="fas fa-bullhorn" style="font-size: 24px; color: #D32F2F;"></i>
+                    </div>
+                    <div>
+                        <h3 style="margin-bottom: 8px;">Digital Marketing Manager</h3>
+                        <div style="display: flex; gap: 16px; color: var(--text-secondary); margin-bottom: 8px;">
+                            <span><i class="fas fa-building"></i> GrowthMarket LLC</span>
+                            <span><i class="fas fa-map-marker-alt"></i> New York, NY</span>
+                            <span><i class="fas fa-money-bill-wave"></i> $90k - $110k</span>
+                        </div>
+                        <div class="job-skills" style="margin-bottom: 0;">
+                            <span class="job-skill">SEO</span>
+                            <span class="job-skill">Content Strategy</span>
+                            <span class="job-skill">Social Media</span>
+                            <span class="job-skill">4+ years</span>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="#" class="btn">Apply Now</a>
+                    </div>
+                </div>
+
+                <div style="background: white; border-radius: var(--border-radius); padding: 24px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04); display: grid; grid-template-columns: auto 1fr auto; gap: 24px; align-items: center;">
+                    <div style="width: 64px; height: 64px; background-color: #E8EAF6; display: flex; align-items: center; justify-content: center; border-radius: 16px;">
+                        <i class="fas fa-tasks" style="font-size: 24px; color: #3F51B5;"></i>
+                    </div>
+                    <div>
+                        <h3 style="margin-bottom: 8px;">Project Manager</h3>
+                        <div style="display: flex; gap: 16px; color: var(--text-secondary); margin-bottom: 8px;">
+                            <span><i class="fas fa-building"></i> InnovateX</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Chicago, IL</span>
+                            <span><i class="fas fa-money-bill-wave"></i> $85k - $105k</span>
+                        </div>
+                        <div class="job-skills" style="margin-bottom: 0;">
+                            <span class="job-skill">Agile</span>
+                            <span class="job-skill">Scrum</span>
+                            <span class="job-skill">Team Leadership</span>
+                            <span class="job-skill">2+ years</span>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="#" class="btn">Apply Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div style="display: flex; justify-content: center; margin-top: 40px;">
+                <div style="display: flex; gap: 8px;">
+                    <a href="#" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 8px; border: 1px solid #E5E5E5; color: var(--text-secondary);"><i class="fas fa-chevron-left"></i></a>
+                    <a href="#" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 8px; background-color: var(--primary); color: white;">1</a>
+                    <a href="#" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 8px; border: 1px solid #E5E5E5; color: var(--text-secondary);">2</a>
+                    <a href="#" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 8px; border: 1px solid #E5E5E5; color: var(--text-secondary);">3</a>
+                    <a href="#" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 8px; border: 1px solid #E5E5E5; color: var(--text-secondary);"><i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner">
+        <div class="container">
+            <h2>Not Finding the Right Job?</h2>
+            <p style="max-width: 600px; margin: 0 auto 24px; color: var(--text-secondary);">Upload your resume and let employers find you</p>
+            <a href="#" class="btn hero-cta">Upload Resume</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-container">
+            <a href="index.html" class="logo">Delowave</a>
+            <div class="footer-links">
+                <a href="courses.html">Courses</a>
+                <a href="jobs.html">Jobs</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const pills = document.querySelectorAll('.filter-pill');
+            pills.forEach(pill => {
+                pill.addEventListener('click', function() {
+                    pills.forEach(p => p.classList.remove('active'));
+                    this.classList.add('active');
+                    // Here we would normally filter the job listings
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

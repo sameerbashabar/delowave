@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delowave | Learn. Build. Succeed.</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles */
+        /* Global styles are inherited from external stylesheet */
+
+        /* Path Finder Questionnaire Styles */
+        .path-finder-card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            position: relative;
+            padding: 2rem;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background-color: #F0F0F0;
+            border-radius: 3px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3B82F6, #2563EB);
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+        }
+
+        .path-finder-step {
+            display: none;
+        }
+
+        .path-finder-step.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .question-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #1E293B;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .option-card {
+            background-color: #F8FAFC;
+            border: 2px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .option-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+        }
+
+        .option-card.selected {
+            border-color: #3B82F6;
+            background-color: rgba(59, 130, 246, 0.05);
+        }
+
+        .option-card h4 {
+            font-weight: 600;
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+            color: #334155;
+        }
+
+        .option-card p {
+            color: #64748B;
+            font-size: 0.9375rem;
+            line-height: 1.5;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        .btn-back {
+            background-color: #F1F5F9;
+            color: #475569;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-back:hover {
+            background-color: #E2E8F0;
+        }
+
+        .btn-next {
+            background-color: #3B82F6;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.75rem;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-next:hover {
+            background-color: #2563EB;
+        }
+
+        .results-card {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .results-card h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1E293B;
+        }
+
+        .path-recommendation {
+            margin: 2rem 0;
+            padding: 2rem;
+            background-color: #F8FAFC;
+            border-radius: 12px;
+            text-align: left;
+        }
+
+        .path-recommendation h4 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #3B82F6;
+        }
+
+        .recommendation-courses {
+            margin-top: 1.5rem;
+        }
+
+        .recommendation-course {
+            padding: 1rem;
+            background-color: white;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+        }
+
+        .recommendation-course-icon {
+            background-color: rgba(59, 130, 246, 0.1);
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+        }
+
+        .recommendation-course-icon i {
+            color: #3B82F6;
+            font-size: 1.25rem;
+        }
+
+        .recommendation-course-info h5 {
+            font-weight: 600;
+            font-size: 1.125rem;
+            margin-bottom: 0.25rem;
+            color: #334155;
+        }
+
+        .recommendation-course-info p {
+            color: #64748B;
+            font-size: 0.875rem;
+        }
+
+        .btn-view-all-courses {
+            background-color: #3B82F6;
+            color: white;
+            border: none;
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 1rem;
+            display: inline-block;
+        }
+
+        .btn-view-all-courses:hover {
+            background-color: #2563EB;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .path-finder-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">Delowave</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="jobs.html">Jobs</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="signup.html" class="cta-button">Sign Up</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Unlock Your Potential with Premium Online Courses</h1>
+                <p>Join our community of learners and professionals to acquire in-demand skills, advance your career, and connect with industry leaders.</p>
+                <div class="hero-cta">
+                    <a href="courses.html" class="cta-button">Explore Courses</a>
+                    <a href="jobs.html" class="secondary-button">Browse Jobs</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Showcase Section -->
+    <section id="courses" class="course-showcase">
+        <div class="container">
+            <h2 class="section-title">Explore Our Courses</h2>
+            <p class="section-subtitle">Master new skills and advance your career</p>
+            
+            <!-- Path Finder Questionnaire Card -->
+            <div class="path-finder-card">
+                <!-- Progress Bar -->
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+                
+                <!-- Step 1: Interest Selection -->
+                <div class="path-step" id="step1">
+                    <h3 class="path-question">What's your area of interest?</h3>
+                    
+                    <div class="options-container">
+                        <div class="option-card" data-value="technology">
+                            <div class="option-icon">💻</div>
+                            <h4 class="option-title">Technology</h4>
+                            <p class="option-desc">Coding, data science, UX/UI design and more</p>
+                        </div>
+                        
+                        <div class="option-card" data-value="management">
+                            <div class="option-icon">📊</div>
+                            <h4 class="option-title">Management</h4>
+                            <p class="option-desc">Marketing, leadership, finance and more</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-indicator">Step 1 of 2</div>
+                </div>
+                
+                <!-- Step 2: Technology Specialization -->
+                <div class="path-step" id="step2-technology" style="display: none;">
+                    <div class="step-header">
+                        <button class="back-button" data-target="step1"><i class="fas fa-arrow-left"></i></button>
+                        <h3 class="path-question">What do you want to specialize in?</h3>
+                    </div>
+                    
+                    <div class="categories-container">
+                        <div class="category-item">
+                            <div class="category-header">
+                                <span>Frontend Development</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="category-content">
+                                <div class="course-item" data-course="html-css">HTML & CSS Fundamentals</div>
+                                <div class="course-item" data-course="javascript">JavaScript Essentials</div>
+                                <div class="course-item" data-course="react">React</div>
+                                <div class="course-item" data-course="bootstrap">Bootstrap</div>
+                            </div>
+                        </div>
+                        
+                        <div class="category-item">
+                            <div class="category-header">
+                                <span>Backend Development</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="category-content">
+                                <div class="course-item" data-course="python">Python Programming</div>
+                                <div class="course-item" data-course="nodejs">Node.js</div>
+                                <div class="course-item" data-course="php">PHP</div>
+                                <div class="course-item" data-course="django">Django</div>
+                            </div>
+                        </div>
+                        
+                        <div class="category-item">
+                            <div class="category-header">
+                                <span>Full-Stack Development</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="category-content">
+                                <div class="course-item" data-course="web-building">Web Building</div>
+                                <div class="course-item" data-course="js-node">JavaScript + Node.js</div>
+                                <div class="course-item" data-course="html-django">HTML/CSS + Django</div>
+                            </div>
+                        </div>
+                        
+                        <div class="category-item">
+                            <div class="category-header">
+                                <span>Data & Databases</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="category-content">
+                                <div class="course-item" data-course="data-analytics">Data Analytics</div>
+                                <div class="course-item" data-course="sql">SQL</div>
+                                <div class="course-item" data-course="mongodb">MongoDB</div>
+                                <div class="course-item" data-course="ml">Machine Learning</div>
+                            </div>
+                        </div>
+                        
+                        <div class="category-item">
+                            <div class="category-header">
+                                <span>Advanced/Core CS</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="category-content">
+                                <div class="course-item" data-course="java">Java</div>
+                                <div class="course-item" data-course="cpp">C++</div>
+                                <div class="course-item" data-course="dsa">DSA (Data Structures & Algorithms)</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step-indicator">Step 2 of 2</div>
+                </div>
+                
+                <!-- Step 2: Management Specialization -->
+                <div class="path-step" id="step2-management" style="display: none;">
+                    <div class="step-header">
+                        <button class="back-button" data-target="step1"><i class="fas fa-arrow-left"></i></button>
+                        <h3 class="path-question">Which management area interests you?</h3>
+                    </div>
+                    
+                    <div class="categories-container">
+                        <div class="category-item">
+                            <div class="category-header">
+                                <span>Digital Marketing</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="category-content">
+                                <div class="course-item" data-course="digital-marketing">Digital Marketing</div>
+                                <div class="course-item" data-course="content-marketing">Content Marketing</div>
+                                <div class="course-item" data-course="social-media">Social Media Marketing</div>
+                            </div>
+                        </div>
+                        
+                        <div class="category-item">
+                            <div class="category-header">
+                                <span>Data-Driven Management</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="category-content">
+                                <div class="course-item" data-course="data-analytics-biz">Data Analytics</div>
+                                <div class="course-item" data-course="market-research">Market Research & Analysis</div>
+                            </div>
+                        </div>
+                        
+                        <div class="category-item">
+                            <div class="category-header">
+                                <span>Leadership</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="category-content">
+                                <div class="course-item" data-course="business-management">Business Management</div>
+                                <div class="course-item" data-course="project-management">Project Management</div>
+                                <div class="course-item" data-course="hr-management">Human Resource Management</div>
+                            </div>
+                        </div>
+                        
+                        <div class="category-item">
+                            <div class="category-header">
+                                <span>Entrepreneurship</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="category-content">
+                                <div class="course-item" data-course="entrepreneurship">Entrepreneurship Essentials</div>
+                                <div class="course-item" data-course="financial-literacy">Financial Literacy for Business</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step-indicator">Step 2 of 2</div>
+                </div>
+                
+                <!-- Step 3: Recommendations -->
+                <div class="path-step" id="step3" style="display: none;">
+                    <div class="step-header">
+                        <button class="back-button" data-target=""><i class="fas fa-arrow-left"></i></button>
+                        <h3 class="path-question">Recommended courses for you</h3>
+                    </div>
+                    
+                    <div class="recommendations-grid">
+                        <!-- Recommendations will be dynamically added by JavaScript -->
+                    </div>
+                    
+                    <div class="counselor-link">
+                        <a href="#">Want career advice? Chat with our counselor!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Audience Section -->
+    <section class="audience">
+        <div class="container">
+            <h2>Who Is Delowave For?</h2>
+            <div class="audience-grid">
+                <div class="audience-card">
+                    <div class="audience-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>Students</h3>
+                    <p>Supplement your education with practical skills that make you job-ready upon graduation.</p>
+                </div>
+                <div class="audience-card">
+                    <div class="audience-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Professionals</h3>
+                    <p>Upskill or reskill to stay competitive in your field or prepare for a career transition.</p>
+                </div>
+                <div class="audience-card">
+                    <div class="audience-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Organizations</h3>
+                    <p>Train your teams with the latest skills in technology and management to drive innovation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner">
+        <div class="container">
+            <h2>Ready to start your learning journey?</h2>
+            <p>Choose from our wide range of courses and take your first step today.</p>
+            <a href="courses.html" class="cta-button">Browse All Courses</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>Delowave</h2>
+                    <p>Your gateway to in-demand skills and opportunities.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h3>Company</h3>
+                        <a href="#">About Us</a>
+                        <a href="#">Careers</a>
+                        <a href="#">Blog</a>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Resources</h3>
+                        <a href="#">Courses</a>
+                        <a href="#">Jobs</a>
+                        <a href="#">Community</a>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Support</h3>
+                        <a href="#">Help Center</a>
+                        <a href="#">Contact Us</a>
+                        <a href="#">Privacy Policy</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Delowave. All rights reserved.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.querySelector('.menu-btn');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        
+        if (menuBtn) {
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Path Finder Questionnaire Functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            // Elements
+            const steps = document.querySelectorAll('.path-step');
+            const progressFill = document.getElementById('progressFill');
+            const backButtons = document.querySelectorAll('.back-button');
+            const optionCards = document.querySelectorAll('.option-card');
+            const categoryItems = document.querySelectorAll('.category-item');
+            const courseItems = document.querySelectorAll('.course-item');
+            
+            // State
+            let currentStep = 1;
+            let selectedPath = null;
+            let selectedCourse = null;
+            let maxSteps = 3;
+            
+            // Update progress bar
+            function updateProgress() {
+                const progressPercentage = Math.min((currentStep) / maxSteps * 100, 100);
+                progressFill.style.width = `${progressPercentage}%`;
+            }
+            
+            // Show step
+            function showStep(stepNumber) {
+                steps.forEach(step => {
+                    step.style.display = 'none';
+                });
+                
+                // Determine which step to show based on selection
+                if (stepNumber === 1) {
+                    document.getElementById('step1').style.display = 'block';
+                } else if (stepNumber === 2) {
+                    if (selectedPath === 'technology') {
+                        document.getElementById('step2-technology').style.display = 'block';
+                    } else if (selectedPath === 'management') {
+                        document.getElementById('step2-management').style.display = 'block';
+                    }
+                } else if (stepNumber === 3) {
+                    document.getElementById('step3').style.display = 'block';
+                }
+                
+                currentStep = stepNumber;
+                updateProgress();
+            }
+            
+            // Set up back buttons
+            backButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const targetStep = button.dataset.target ? 
+                        parseInt(button.dataset.target.replace('step', '')) : 
+                        currentStep - 1;
+                    
+                    if (targetStep >= 1) {
+                        showStep(targetStep);
+                    }
+                });
+            });
+            
+            // Setup option cards in step 1
+            optionCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    // Remove selected class from all cards
+                    optionCards.forEach(c => c.classList.remove('selected'));
+                    
+                    // Add selected class to clicked card
+                    card.classList.add('selected');
+                    
+                    // Store the selected path
+                    selectedPath = card.dataset.value;
+                    
+                    // Set back button target for step 2
+                    if (selectedPath === 'technology') {
+                        document.querySelector('#step2-technology .back-button').dataset.target = "step1";
+                    } else if (selectedPath === 'management') {
+                        document.querySelector('#step2-management .back-button').dataset.target = "step1";
+                    }
+                    
+                    // Move to step 2 after a short delay
+                    setTimeout(() => {
+                        showStep(2);
+                    }, 300);
+                });
+            });
+            
+            // Setup category items in step 2
+            categoryItems.forEach(item => {
+                const header = item.querySelector('.category-header');
+                
+                header.addEventListener('click', () => {
+                    // Toggle active class
+                    item.classList.toggle('active');
+                });
+            });
+            
+            // Setup course items in step 2
+            courseItems.forEach(course => {
+                course.addEventListener('click', () => {
+                    // Remove selected class from all courses
+                    courseItems.forEach(c => c.classList.remove('selected'));
+                    
+                    // Add selected class to clicked course
+                    course.classList.add('selected');
+                    
+                    // Store selected course
+                    selectedCourse = course.dataset.course;
+                    
+                    // Set back button target for step 3
+                    const parentStep = course.closest('.path-step').id;
+                    document.querySelector('#step3 .back-button').dataset.target = parentStep;
+                    
+                    // Generate recommendations
+                    generateRecommendations();
+                    
+                    // Move to step 3 after a short delay
+                    setTimeout(() => {
+                        showStep(3);
+                    }, 300);
+                });
+            });
+            
+            // Generate course recommendations
+            function generateRecommendations() {
+                const recommendationsGrid = document.querySelector('.recommendations-grid');
+                recommendationsGrid.innerHTML = '';
+                
+                let recommendations = [];
+                
+                // Determine recommendations based on selected course
+                if (selectedPath === 'technology') {
+                    if (selectedCourse === 'html-css' || selectedCourse === 'javascript' || 
+                        selectedCourse === 'react' || selectedCourse === 'bootstrap') {
+                        recommendations = [
+                            { title: 'Frontend Fundamentals', duration: '8 weeks', level: 'Beginner' },
+                            { title: 'JavaScript Essentials', duration: '10 weeks', level: 'Intermediate' },
+                            { title: 'React Development', duration: '12 weeks', level: 'Intermediate' }
+                        ];
+                    } else if (selectedCourse === 'python' || selectedCourse === 'nodejs' || 
+                               selectedCourse === 'php' || selectedCourse === 'django') {
+                        recommendations = [
+                            { title: 'Python Programming', duration: '12 weeks', level: 'Beginner' },
+                            { title: 'Node.js', duration: '10 weeks', level: 'Intermediate' },
+                            { title: 'Backend Development', duration: '14 weeks', level: 'Intermediate' }
+                        ];
+                    } else if (selectedCourse === 'data-analytics' || selectedCourse === 'sql' || 
+                               selectedCourse === 'mongodb' || selectedCourse === 'ml') {
+                        recommendations = [
+                            { title: 'Data Analytics', duration: '10 weeks', level: 'Intermediate' },
+                            { title: 'SQL Fundamentals', duration: '8 weeks', level: 'Beginner' },
+                            { title: 'Machine Learning', duration: '14 weeks', level: 'Advanced' }
+                        ];
+                    } else {
+                        recommendations = [
+                            { title: 'Web Development', duration: '12 weeks', level: 'Beginner' },
+                            { title: 'Programming Fundamentals', duration: '8 weeks', level: 'Beginner' },
+                            { title: 'Backend Engineering', duration: '14 weeks', level: 'Intermediate' }
+                        ];
+                    }
+                } else if (selectedPath === 'management') {
+                    if (selectedCourse === 'digital-marketing' || selectedCourse === 'content-marketing' || 
+                        selectedCourse === 'social-media') {
+                        recommendations = [
+                            { title: 'Digital Marketing', duration: '8 weeks', level: 'Beginner' },
+                            { title: 'Content Marketing', duration: '10 weeks', level: 'Intermediate' },
+                            { title: 'Social Media Strategy', duration: '6 weeks', level: 'Beginner' }
+                        ];
+                    } else if (selectedCourse === 'data-analytics-biz' || selectedCourse === 'market-research') {
+                        recommendations = [
+                            { title: 'Business Analytics', duration: '10 weeks', level: 'Intermediate' },
+                            { title: 'Market Research', duration: '8 weeks', level: 'Intermediate' },
+                            { title: 'Data-Driven Decisions', duration: '12 weeks', level: 'Advanced' }
+                        ];
+                    } else if (selectedCourse === 'business-management' || selectedCourse === 'project-management' || 
+                               selectedCourse === 'hr-management') {
+                        recommendations = [
+                            { title: 'Business Management', duration: '10 weeks', level: 'Intermediate' },
+                            { title: 'Project Management', duration: '12 weeks', level: 'All Levels' },
+                            { title: 'Leadership Skills', duration: '8 weeks', level: 'Intermediate' }
+                        ];
+                    } else {
+                        recommendations = [
+                            { title: 'Entrepreneurship', duration: '12 weeks', level: 'Intermediate' },
+                            { title: 'Business Fundamentals', duration: '8 weeks', level: 'Beginner' },
+                            { title: 'Financial Planning', duration: '10 weeks', level: 'Intermediate' }
+                        ];
+                    }
+                }
+                
+                // Create and append recommendation cards with staggered animation
+                recommendations.forEach((recommendation, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'recommendation-card';
+                    
+                    card.innerHTML = `
+                        <h4 class="recommendation-title">${recommendation.title}</h4>
+                        <div class="recommendation-meta">${recommendation.duration} • ${recommendation.level}</div>
+                        <a href="courses.html?filter=${selectedPath}" class="enroll-button">Enroll Now</a>
+                    `;
+                    
+                    recommendationsGrid.appendChild(card);
+                    
+                    // Add staggered animation
+                    setTimeout(() => {
+                        card.classList.add('show');
+                    }, index * 100);
+                });
+            }
+            
+            // Initialize the questionnaire
+            showStep(1);
+            updateProgress();
+        });
+    </script>
+</body>
+</html> 
+</html> 

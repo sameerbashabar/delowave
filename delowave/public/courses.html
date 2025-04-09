@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses | Delowave</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">Delowave</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="courses.html" class="active">Courses</a></li>
+                    <li><a href="jobs.html">Jobs</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="signup.html" class="cta-button">Sign Up</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Courses Hero -->
+    <section class="courses-hero">
+        <div class="container">
+            <h1>Explore Our Courses</h1>
+            <p>Learn in-demand skills for technology and management careers</p>
+            
+            <!-- Integrated Search Bar & Toggle -->
+            <div class="search-toggle-container">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="courseSearch" placeholder="Search courses...">
+                </div>
+                <div class="toggle-switch">
+                    <input type="checkbox" id="courseToggle" class="toggle-input">
+                    <label for="courseToggle" class="toggle-label">
+                        <span class="toggle-option technology-option">Technology</span>
+                        <span class="toggle-option management-option">Management</span>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Grid -->
+    <section class="course-grid">
+        <div class="container">
+            <div class="courses-wrapper three-column" id="coursesGrid">
+                <!-- Course cards will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="courses-cta">
+        <div class="container">
+            <h2>Find the Perfect Course for Your Goals</h2>
+            <a href="#" class="cta-button">Browse All Courses</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>Delowave</h2>
+                    <p>Your gateway to in-demand skills and opportunities.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h3>Company</h3>
+                        <a href="#">About Us</a>
+                        <a href="#">Careers</a>
+                        <a href="#">Blog</a>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Resources</h3>
+                        <a href="#">Courses</a>
+                        <a href="#">Jobs</a>
+                        <a href="#">Community</a>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Support</h3>
+                        <a href="#">Help Center</a>
+                        <a href="#">Contact Us</a>
+                        <a href="#">Privacy Policy</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Delowave. All rights reserved.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.querySelector('.menu-btn');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        
+        if (menuBtn) {
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Courses functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            // Elements
+            const toggleSwitch = document.getElementById('courseToggle');
+            const toggleLabel = document.querySelector('.toggle-label');
+            const searchInput = document.getElementById('courseSearch');
+            const coursesGrid = document.getElementById('coursesGrid');
+            
+            // Course data - Technology courses
+            const technologyCourses = [
+                {
+                    id: 'html-css',
+                    title: 'HTML & CSS Fundamentals',
+                    icon: 'code',
+                    description: 'Build beautiful, responsive websites from scratch.',
+                    duration: '8 weeks',
+                    level: 'Beginner'
+                },
+                {
+                    id: 'javascript',
+                    title: 'JavaScript Essentials',
+                    icon: 'js',
+                    description: 'Master modern JS and build interactive web apps.',
+                    duration: '10 weeks',
+                    level: 'Intermediate'
+                },
+                {
+                    id: 'python',
+                    title: 'Python Programming',
+                    icon: 'python',
+                    description: 'Learn Python for data science, web dev, and automation.',
+                    duration: '12 weeks',
+                    level: 'Beginner'
+                },
+                {
+                    id: 'data-analytics',
+                    title: 'Data Analytics',
+                    icon: 'chart-bar',
+                    description: 'Analyze and interpret data for actionable insights.',
+                    duration: '10 weeks',
+                    level: 'Intermediate'
+                },
+                {
+                    id: 'backend',
+                    title: 'Backend',
+                    icon: 'server',
+                    description: 'Build robust server-side applications.',
+                    duration: '12 weeks',
+                    level: 'Intermediate'
+                },
+                {
+                    id: 'web-building',
+                    title: 'Web Building',
+                    icon: 'globe',
+                    description: 'Create full-stack websites from start to finish.',
+                    duration: '10 weeks',
+                    level: 'Beginner'
+                },
+                {
+                    id: 'sql',
+                    title: 'SQL',
+                    icon: 'database',
+                    description: 'Database management and queries.',
+                    duration: '8 weeks',
+                    level: 'Beginner'
+                },
+                {
+                    id: 'php',
+                    title: 'PHP',
+                    icon: 'php',
+                    description: 'Server-side scripting for web development.',
+                    duration: '10 weeks',
+                    level: 'Intermediate'
+                },
+                {
+                    id: 'bootstrap',
+                    title: 'Bootstrap',
+                    icon: 'bootstrap',
+                    description: 'Responsive framework for mobile-first websites.',
+                    duration: '6 weeks',
+                    level: 'Beginner'
+                },
+                {
+                    id: 'react',
+                    title: 'React',
+                    icon: 'react',
+                    description: 'Build interactive UIs with component-based architecture.',
+                    duration: '10 weeks',
+                    level: 'Intermediate'
+                },
+                {
+                    id: 'jquery',
+                    title: 'jQuery',
+                    icon: 'js',
+                    description: 'Simplify JavaScript for dynamic web features.',
+                    duration: '6 weeks',
+                    level: 'Beginner'
+                },
+                {
+                    id: 'java',
+                    title: 'Java',
+                    icon: 'java',
+                    description: 'Object-oriented programming for enterprise apps.',
+                    duration: '12 weeks',
+                    level: 'Intermediate'
+                },
+                {
+                    id: 'cpp',
+                    title: 'C++',
+                    icon: 'file-code',
+                    description: 'High-performance computing and game development.',
+                    duration: '12 weeks',
+                    level: 'Advanced'
+                },
+                {
+                    id: 'nodejs',
+                    title: 'Node.js',
+                    icon: 'node-js',
+                    description: 'Build scalable backend systems with JavaScript.',
+                    duration: '10 weeks',
+                    level: 'Intermediate'
+                },
+                {
+                    id: 'typescript',
+                    title: 'TypeScript',
+                    icon: 'js',
+                    description: 'Enhance JavaScript with static typing.',
+                    duration: '8 weeks',
+                    level: 'Intermediate'
+                },
+                {
+                    id: 'mongodb',
+                    title: 'MongoDB',
+                    icon: 'database',
+                    description: 'NoSQL database management for modern apps.',
+                    duration: '8 weeks',
+                    level: 'Intermediate'
+                },
+                {
+                    id: 'django',
+                    title: 'Django',
+                    icon: 'python',
+                    description: 'Build secure web apps with Python framework.',
+                    duration: '10 weeks',
+                    level: 'Intermediate'
+                },
+                {
+                    id: 'vue',
+                    title: 'Vue',
+                    icon: 'vuejs',
+                    description: 'Progressive framework for modern web interfaces.',
+                    duration: '8 weeks',
+                    level: 'Intermediate'
+                },
+                {
+                    id: 'angular',
+                    title: 'Angular',
+                    icon: 'angular',
+                    description: 'Full-featured framework for complex apps.',
+                    duration: '12 weeks',
+                    level: 'Advanced'
+                },
+                {
+                    id: 'dsa',
+                    title: 'DSA',
+                    icon: 'code-branch',
+                    description: 'Master data structures and algorithms.',
+                    duration: '12 weeks',
+                    level: 'Intermediate'
+                },
+                {
+                    id: 'machine-learning',
+                    title: 'Machine Learning',
+                    icon: 'brain',
+                    description: 'Build predictive models with Python.',
+                    duration: '14 weeks',
+                    level: 'Advanced'
+                }
+            ];
+            
+            // Course data - Management courses
+            const managementCourses = [
+                {
+                    id: 'digital-marketing',
+                    title: 'Digital Marketing',
+                    icon: 'ad',
+                    description: 'Create and execute effective digital campaigns.',
+                    duration: '8 weeks',
+                    level: 'Beginner'
+                },
+                {
+                    id: 'business-management',
+                    title: 'Business Management',
+                    icon: 'briefcase',
+                    description: 'Develop leadership skills and management strategies.',
+                    duration: '10 weeks',
+                    level: 'Intermediate'
+                },
+                {
+                    id: 'project-management',
+                    title: 'Project Management',
+                    icon: 'tasks',
+                    description: 'Master project planning, execution, and delivery.',
+                    duration: '12 weeks',
+                    level: 'All Levels'
+                },
+                {
+                    id: 'business-skills',
+                    title: 'Business Management Skills',
+                    icon: 'user-tie',
+                    description: 'Enhance decision-making and team management.',
+                    duration: '8 weeks',
+                    level: 'Beginner'
+                },
+                {
+                    id: 'sales',
+                    title: 'Sales Fundamentals',
+                    icon: 'comments-dollar',
+                    description: 'Build skills in lead generation and closing deals.',
+                    duration: '8 weeks',
+                    level: 'Beginner'
+                },
+                {
+                    id: 'content-marketing',
+                    title: 'Content Marketing',
+                    icon: 'pencil-alt',
+                    description: 'Create compelling content to drive brand growth.',
+                    duration: '10 weeks',
+                    level: 'Intermediate'
+                },
+                {
+                    id: 'social-media',
+                    title: 'Social Media Marketing',
+                    icon: 'hashtag',
+                    description: 'Master advertising and engagement on platforms.',
+                    duration: '8 weeks',
+                    level: 'Beginner'
+                },
+                {
+                    id: 'financial-literacy',
+                    title: 'Financial Literacy for Business',
+                    icon: 'coins',
+                    description: 'Understand budgeting and financial decisions.',
+                    duration: '10 weeks',
+                    level: 'Beginner'
+                },
+                {
+                    id: 'entrepreneurship',
+                    title: 'Entrepreneurship Essentials',
+                    icon: 'lightbulb',
+                    description: 'Develop business ideas and pitch startups.',
+                    duration: '12 weeks',
+                    level: 'Intermediate'
+                },
+                {
+                    id: 'market-research',
+                    title: 'Market Research & Analysis',
+                    icon: 'search-dollar',
+                    description: 'Conduct surveys and analyze data for strategies.',
+                    duration: '10 weeks',
+                    level: 'Intermediate'
+                },
+                {
+                    id: 'consumer-behavior',
+                    title: 'Consumer Behavior',
+                    icon: 'users',
+                    description: 'Explore customer psychology and buying patterns.',
+                    duration: '8 weeks',
+                    level: 'Beginner'
+                },
+                {
+                    id: 'pr-communication',
+                    title: 'Public Relations & Communication',
+                    icon: 'bullhorn',
+                    description: 'Manage media and craft PR campaigns.',
+                    duration: '10 weeks',
+                    level: 'Intermediate'
+                },
+                {
+                    id: 'brand-management',
+                    title: 'Brand Management',
+                    icon: 'copyright',
+                    description: 'Build and protect brand identity.',
+                    duration: '10 weeks',
+                    level: 'Intermediate'
+                },
+                {
+                    id: 'hr-management',
+                    title: 'Human Resource Management',
+                    icon: 'user-friends',
+                    description: 'Learn recruitment and employee engagement.',
+                    duration: '12 weeks',
+                    level: 'All Levels'
+                },
+                {
+                    id: 'negotiation',
+                    title: 'Negotiation Skills',
+                    icon: 'handshake',
+                    description: 'Master techniques for effective business deals.',
+                    duration: '8 weeks',
+                    level: 'Beginner'
+                }
+            ];
+            
+            // Current filter state
+            let currentCategory = 'all';
+            
+            // Function to create course cards
+            function createCourseCard(course, category) {
+                const card = document.createElement('div');
+                card.className = 'course-card';
+                card.dataset.category = category;
+                
+                card.innerHTML = `
+                    <div class="course-icon">
+                        <i class="fas fa-${course.icon}"></i>
+                    </div>
+                    <h3 class="course-title">${course.title}</h3>
+                    <p class="course-description">${course.description}</p>
+                    <div class="course-meta">
+                        <span class="course-duration"><i class="fas fa-clock"></i> ${course.duration}</span>
+                        <span class="course-level"><i class="fas fa-signal"></i> ${course.level}</span>
+                    </div>
+                    <a href="#" class="cssbuttons-io-button"> Get started
+                        <div class="icon">
+                            <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" fill="currentColor"></path>
+                            </svg>
+                        </div>
+                    </a>
+                `;
+                
+                return card;
+            }
+            
+            // Function to display courses based on current filter
+            function displayCourses(filter = '') {
+                // Clear grid
+                coursesGrid.innerHTML = '';
+                
+                let coursesToShow = [];
+                
+                // Determine which courses to show based on category filter
+                if (currentCategory === 'all' || currentCategory === '') {
+                    coursesToShow = [...technologyCourses, ...managementCourses];
+                } else if (currentCategory === 'technology') {
+                    coursesToShow = technologyCourses;
+                } else if (currentCategory === 'management') {
+                    coursesToShow = managementCourses;
+                }
+                
+                // Apply text search filter if provided
+                if (filter) {
+                    const searchTerm = filter.toLowerCase();
+                    coursesToShow = coursesToShow.filter(course => 
+                        course.title.toLowerCase().includes(searchTerm) || 
+                        course.description.toLowerCase().includes(searchTerm) ||
+                        course.level.toLowerCase().includes(searchTerm)
+                    );
+                }
+                
+                // Create and append cards with staggered animation
+                if (coursesToShow.length === 0) {
+                    const noResults = document.createElement('div');
+                    noResults.className = 'no-results';
+                    noResults.textContent = 'No courses found matching your criteria. Try adjusting your search.';
+                    coursesGrid.appendChild(noResults);
+                } else {
+                    coursesToShow.forEach((course, index) => {
+                        const category = technologyCourses.includes(course) ? 'technology' : 'management';
+                        const card = createCourseCard(course, category);
+                        coursesGrid.appendChild(card);
+                        
+                        // Add staggered animation
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, index * 50);
+                    });
+                }
+            }
+            
+            // Toggle event listener
+            if (toggleSwitch) {
+                toggleSwitch.addEventListener('change', () => {
+                    // Fade out all cards
+                    const cards = document.querySelectorAll('.course-card');
+                    cards.forEach(card => {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                    });
+                    
+                    // Set new category after animation
+                    setTimeout(() => {
+                        currentCategory = toggleSwitch.checked ? 'management' : 'technology';
+                        displayCourses(searchInput ? searchInput.value : '');
+                    }, 200);
+                });
+            }
+            
+            // Search event listener
+            if (searchInput) {
+                searchInput.addEventListener('input', () => {
+                    displayCourses(searchInput.value);
+                });
+            }
+            
+            // Check for URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlFilter = urlParams.get('filter');
+            
+            // Apply URL filter if present
+            if (urlFilter) {
+                if (urlFilter === 'technology' || urlFilter === 'tech') {
+                    currentCategory = 'technology';
+                    if (toggleSwitch) toggleSwitch.checked = false;
+                } else if (urlFilter === 'management' || urlFilter === 'non-tech' || urlFilter === 'business') {
+                    currentCategory = 'management';
+                    if (toggleSwitch) toggleSwitch.checked = true;
+                }
+            }
+            
+            // Initialize courses display
+            displayCourses();
+        });
+    </script>
+</body>
+</html> 
